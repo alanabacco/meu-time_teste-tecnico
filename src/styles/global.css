@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%; /* 10px */
+
+  --white100: #dff7f0;
+  --blue900: #03001c;
+}
+
+body {
+  font-size: 1.6rem; /* 16px */
+  font-family: "Montserrat", sans-serif;
+  color: var(--white100);
+  background: var(--blue900);
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
