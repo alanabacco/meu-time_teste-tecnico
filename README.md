@@ -33,9 +33,10 @@ abra o navegador e entre em http://localhost:3000/.
 - [x] pegar os países
 - [x] pegar as ligas do país
 - [x] pegar os times da liga atual
+- [x] validar api key no login
 - [ ] ??? selecionar temporada
 - [ ] desabilitar botão "buscar informações" antes de escolher time
-- [ ] validar api key no login
+- [ ] criar um logout
 - [ ] ao buscar informações:
   - [ ] ver lista jogadores
   - [ ] formação mais utilizada na temporada

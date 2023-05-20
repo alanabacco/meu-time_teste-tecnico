@@ -1,11 +1,12 @@
-import style from "./../styles/home.module.css";
-import { useRouter } from "next/router";
-import { tokenService } from "@/services/tokenService";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { tokenService } from "@/services/tokenService";
+import { API } from "./team-choice";
+import style from "./../styles/home.module.css";
 
 export default function Home() {
   const [token, setToken] = useState("");
-
   const router = useRouter();
 
   function handleChange(e: any) {
@@ -13,10 +14,31 @@ export default function Home() {
     setToken(value);
   }
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
+    const validate = await validateToken(token);
+    console.log("validate", validate);
+    if (validate === "no") {
+      alert("key de autenticação inválida.");
+      return;
+    }
     tokenService.save(token);
     router.push("/team-choice");
+  }
+
+  async function validateToken(token: string) {
+    try {
+      const response = await axios.get(`${API}/status`, {
+        headers: {
+          "x-rapidapi-key": `${token}`,
+          "x-rapidapi-host": "v3.football.api-sports.io",
+        },
+      });
+      return !response.data.errors.token ? "yes" : "no";
+    } catch (error) {
+      console.error(error);
+      return "no";
+    }
   }
 
   return (
@@ -38,7 +60,6 @@ export default function Home() {
                 id="login"
                 name="login"
                 required
-                min={10}
                 placeholder="token"
                 onChange={handleChange}
                 className={style.input}
