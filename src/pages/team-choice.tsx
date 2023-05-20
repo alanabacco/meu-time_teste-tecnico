@@ -4,43 +4,10 @@ import { useCountries } from "@/hooks/useCountries";
 import { useLeagues } from "@/hooks/useLeagues";
 import { useTeams } from "@/hooks/useTeams";
 import { useSeasons } from "@/hooks/useSeasons";
+import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
+import Link from "next/link";
 
 export const API = "https://v3.football.api-sports.io";
-
-const mockTeam = [
-  {
-    team: {
-      id: 1,
-      name: "asdfsdfsd",
-      code: "string",
-      country: "string",
-      funded: 2000,
-      national: true,
-      logo: "string",
-    },
-  },
-];
-
-const mockLeague = [
-  {
-    league: {
-      id: 71,
-      name: "Serie A",
-      type: "League",
-      logo: "asdfsfsdfsd",
-    },
-  },
-];
-
-const mockCountry = [
-  {
-    name: "Brazil",
-    code: "BR",
-    flag: "asdfsfdf",
-  },
-];
-
-const mockSeason = [1234, 2365, 3333];
 
 export default function TeamChoice() {
   // const { countries } = useCountries();
@@ -72,7 +39,9 @@ export default function TeamChoice() {
     <div className={style.container}>
       <header className={style.header}>
         <h1>Meu Time</h1>
-        <button className={style.button}>Logout</button>
+        <Link href="/logout" className={style.button}>
+          Logout
+        </Link>
       </header>
       <main className={style.main}>
         <form action="submit">
@@ -86,7 +55,7 @@ export default function TeamChoice() {
               onChange={handleCountryChange}
             >
               <option value="">País</option>
-              {mockCountry.map((item: any) => {
+              {mockCountrys.map((item: any) => {
                 return (
                   <option value={item.name} key={item.name}>
                     {item.name}
@@ -106,7 +75,7 @@ export default function TeamChoice() {
               onChange={handleSeasonChange}
             >
               <option value={2023}>2023</option>
-              {mockSeason.map((item: number) => {
+              {mockSeasons.map((item: number) => {
                 // console.log(seasons);
                 return (
                   <option value={item} key={item}>
@@ -128,7 +97,7 @@ export default function TeamChoice() {
               onChange={handleLeagueChange}
             >
               <option value="">Liga</option>
-              {mockLeague.map((item: any) => {
+              {mockLeagues.map((item: any) => {
                 return (
                   <option value={item.league.id} key={item.league.id}>
                     {item.league.name}
@@ -149,7 +118,7 @@ export default function TeamChoice() {
               onChange={handleTeamChange}
             >
               <option value="">Time</option>
-              {mockTeam.map((item: any) => {
+              {mockTeams.map((item: any) => {
                 return (
                   <option value={item.team.name} key={item.team.id}>
                     {item.team.name}
