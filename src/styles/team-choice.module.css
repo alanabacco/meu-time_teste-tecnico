@@ -22,7 +22,7 @@
 }
 
 .input {
-  width: 70%;
+  width: 50%;
   height: 3.2rem;
   font-size: 1.6rem;
   padding-inline: 0.8rem;
@@ -54,6 +54,11 @@
 
 .button:hover {
   border-color: var(--white100);
+}
+
+.button:disabled {
+  transition: none;
+  cursor: none;
 }
 
 @media (max-width: 768px) {

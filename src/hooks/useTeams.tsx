@@ -13,19 +13,19 @@ export interface ITeam {
   logo: string;
 }
 
-export const useTeams = (leagueId: number) => {
+const currentYear = new Date().getFullYear();
+
+export const useTeams = (leagueId: number, season = currentYear) => {
   const [teams, setTeams] = useState<ITeam[]>([]);
-  const currentYear = new Date().getFullYear();
-  console.log("currentYear", currentYear);
 
   useEffect(() => {
     if (!leagueId) return;
 
     const token = tokenService.get();
-    const fetchLeagues = async () => {
+    const fetchTeams = async () => {
       try {
         const response = await axios.get(
-          `${API}/teams?league=${leagueId}&season=${currentYear}`,
+          `${API}/teams?league=${leagueId}&season=${season}`,
           {
             headers: {
               "x-rapidapi-key": `${token}`,
@@ -38,8 +38,8 @@ export const useTeams = (leagueId: number) => {
         console.error(error);
       }
     };
-    fetchLeagues();
-  }, [leagueId]);
+    fetchTeams();
+  }, [leagueId, season]);
 
   return { teams };
 };
