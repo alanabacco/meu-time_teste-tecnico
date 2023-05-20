@@ -18,13 +18,29 @@ O framework Next.js foi utilizado porque atualmente a documentação do React re
 Para executar o projeto de maneira local, você precisa ter o [NodeJS](https://nodejs.org/) e o [Git](https://git-scm.com/) instalados na sua máquina. Em seguida, execute os seguintes comandos um de cada vez em um terminal:
 
 ```bash
-git clone https://github.com/alanabacco/meu_time-teste_tecnico # clonar o projeto
-cd meu_time-teste_tecnico # entrar na pasta
+git clone https://github.com/alanabacco/meu-time_teste-tecnico # clonar o projeto
+cd meu-time_teste-tecnico # entrar na pasta
 npm install # instalar as dependências
-npm run start # para rodar o projeto localmente
+npm run dev # para rodar o projeto localmente
 ```
 
 abra o navegador e entre em http://localhost:3000/.
+
+---
+
+## TODO
+
+- [x] pegar os países
+- [x] pegar as ligas do país
+- [x] pegar os times da liga atual
+- [ ] ??? selecionar temporada
+- [ ] desabilitar botão "buscar informações" antes de escolher time
+- [ ] validar api key no login
+- [ ] ao buscar informações:
+  - [ ] ver lista jogadores
+  - [ ] formação mais utilizada na temporada
+  - [ ] tabela de resultados
+  - [ ] gráfico de quantidade de gols marcados por tempo de jogo
 
 ---
 

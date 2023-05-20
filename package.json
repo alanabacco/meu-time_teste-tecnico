@@ -1,12 +1,12 @@
 {
-  "name": "meu_time-teste_tecnico",
+  "name": "meu-time_teste-tecnico",
   "version": "0.1.0",
   "private": true,
   "description": "Meu Time. Teste técnico de front end.",
   "author": "Alana Bacco",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alanabacco/meu_time-teste_tecnico"
+    "url": "git+https://github.com/alanabacco/meu-time_teste-tecnico"
   },
   "scripts": {
     "dev": "next dev",
