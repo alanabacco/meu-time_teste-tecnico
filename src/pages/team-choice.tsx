@@ -7,14 +7,49 @@ import { useSeasons } from "@/hooks/useSeasons";
 
 export const API = "https://v3.football.api-sports.io";
 
+const mockTeam = [
+  {
+    team: {
+      id: 1,
+      name: "asdfsdfsd",
+      code: "string",
+      country: "string",
+      funded: 2000,
+      national: true,
+      logo: "string",
+    },
+  },
+];
+
+const mockLeague = [
+  {
+    league: {
+      id: 71,
+      name: "Serie A",
+      type: "League",
+      logo: "asdfsfsdfsd",
+    },
+  },
+];
+
+const mockCountry = [
+  {
+    name: "Brazil",
+    code: "BR",
+    flag: "asdfsfdf",
+  },
+];
+
+const mockSeason = [1234, 2365, 3333];
+
 export default function TeamChoice() {
-  const { countries } = useCountries();
+  // const { countries } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState("");
-  const { seasons } = useSeasons();
+  // const { seasons } = useSeasons();
   const [selectedSeason, setSelectedSeason] = useState(0);
-  const { leagues } = useLeagues(selectedCountry);
+  // const { leagues } = useLeagues(selectedCountry);
   const [selectedLeague, setSelectedLeague] = useState(0);
-  const { teams } = useTeams(selectedLeague, selectedSeason);
+  // const { teams } = useTeams(selectedLeague, selectedSeason);
   const [selectedTeam, setSelectedTeam] = useState("");
 
   const handleCountryChange = (e: any) => {
@@ -37,20 +72,21 @@ export default function TeamChoice() {
     <div className={style.container}>
       <header className={style.header}>
         <h1>Meu Time</h1>
+        <button className={style.button}>Logout</button>
       </header>
       <main className={style.main}>
         <form action="submit">
-          <div>
+          <div className={style.selectContainer}>
             <label htmlFor="country">Escolha um país: </label>
             <select
-              className={style.input}
+              className={style.select}
               required
               name="country"
               id="country"
               onChange={handleCountryChange}
             >
-              <option value="">Escolha um país</option>
-              {countries.map((item: any) => {
+              <option value="">País</option>
+              {mockCountry.map((item: any) => {
                 return (
                   <option value={item.name} key={item.name}>
                     {item.name}
@@ -60,17 +96,17 @@ export default function TeamChoice() {
             </select>
           </div>
 
-          <div>
+          <div className={style.selectContainer}>
             <label htmlFor="season">Escolha uma temporada: </label>
             <select
-              className={style.input}
+              className={style.select}
               required
               name="season"
               id="season"
               onChange={handleSeasonChange}
             >
               <option value={2023}>2023</option>
-              {seasons.map((item: number) => {
+              {mockSeason.map((item: number) => {
                 // console.log(seasons);
                 return (
                   <option value={item} key={item}>
@@ -81,18 +117,18 @@ export default function TeamChoice() {
             </select>
           </div>
 
-          <div>
+          <div className={style.selectContainer}>
             <label htmlFor="league">Escolha uma liga: </label>
             <select
-              className={style.input}
+              className={style.select}
               required
               name="league"
               id="league"
               disabled={!selectedCountry}
               onChange={handleLeagueChange}
             >
-              <option value="">Escolha uma liga</option>
-              {leagues.map((item: any) => {
+              <option value="">Liga</option>
+              {mockLeague.map((item: any) => {
                 return (
                   <option value={item.league.id} key={item.league.id}>
                     {item.league.name}
@@ -102,18 +138,18 @@ export default function TeamChoice() {
             </select>
           </div>
 
-          <div>
+          <div className={style.selectContainer}>
             <label htmlFor="team">Escolha um time: </label>
             <select
-              className={style.input}
+              className={style.select}
               required
               name="team"
               id="team"
-              disabled={!selectedLeague && !teams}
+              disabled={!selectedLeague} // && !teams}
               onChange={handleTeamChange}
             >
-              <option value="">Escolha um time</option>
-              {teams.map((item: any) => {
+              <option value="">Time</option>
+              {mockTeam.map((item: any) => {
                 return (
                   <option value={item.team.name} key={item.team.id}>
                     {item.team.name}
@@ -122,8 +158,7 @@ export default function TeamChoice() {
               })}
             </select>
           </div>
-          <br />
-          <button className={style.button} disabled={!selectedTeam}>
+          <button type="submit" className={style.button} disabled={!selectedTeam}>
             Buscar informações
           </button>
         </form>
