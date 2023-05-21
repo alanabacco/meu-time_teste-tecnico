@@ -1,11 +1,14 @@
 import { useState } from "react";
+import Link from "next/link";
+import ButtonWithIcon from "@/components/ButtonWithIcon/ButtonWithIcon";
+import BackButton from "@/components/BackButton/BackButton";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import style from "./../styles/team-choice.module.css";
 import { useCountries } from "@/hooks/useCountries";
 import { useLeagues } from "@/hooks/useLeagues";
 import { useTeams } from "@/hooks/useTeams";
 import { useSeasons } from "@/hooks/useSeasons";
 import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
-import Link from "next/link";
 
 export const API = "https://v3.football.api-sports.io";
 
@@ -38,9 +41,12 @@ export default function TeamChoice() {
   return (
     <div className={style.container}>
       <header className={style.header}>
-        <h1>Meu Time</h1>
-        <Link href="/logout" className={style.button}>
-          Logout
+        <BackButton />
+        <Link href={"/"}>
+          <h1>Meu Time</h1>
+        </Link>
+        <Link href="/logout">
+          <ButtonWithIcon text="Logout" icon={faArrowRightFromBracket} />
         </Link>
       </header>
       <main className={style.main}>

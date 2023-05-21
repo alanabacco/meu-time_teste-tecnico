@@ -64,8 +64,13 @@
 }
 
 .button:disabled {
+  opacity: 0.4;
   border-color: var(--blue300);
   cursor: not-allowed;
+}
+
+.icon {
+  width: 1.6rem;
 }
 
 @media (max-width: 768px) {

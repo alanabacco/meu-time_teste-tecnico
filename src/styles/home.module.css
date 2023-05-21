@@ -21,35 +21,53 @@
   margin-bottom: 2.4rem;
 }
 
+.form {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.form label {
+  font-size: 2rem;
+}
+
 .input {
   width: 70%;
-  height: 3.2rem;
+  height: 4.2rem;
   font-size: 1.6rem;
   padding-inline: 0.8rem;
   border-radius: 0.4rem;
-  border: solid 1px #5b8fb9;
+  border: solid 1px var(--blue300);
   transition: border 0.2s ease-in-out;
 }
 
 .input:hover,
 .input:focus {
-  border: solid 1.5px #5b8fb9;
+  border: solid 1.5px var(--blue300);
   outline: 0;
 }
 
 .button {
   background-color: var(--blue900);
   color: var(--white100);
-  border: solid 1px #5b8fb9;
+  border: solid 1px var(--blue300);
   border-radius: 0.4rem;
   padding: 0.8rem;
   margin-left: 0.8rem;
   cursor: pointer;
   transition: border-color 0.2s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .button:hover {
   border-color: var(--white100);
+}
+
+.icon {
+  width: 1.6rem;
 }
 
 @media (max-width: 768px) {

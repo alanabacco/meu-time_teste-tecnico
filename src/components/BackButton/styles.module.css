@@ -1,0 +1,21 @@
+.button {
+  background-color: var(--blue900);
+  color: var(--white100);
+  border: solid 1px var(--blue300);
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.button:hover {
+  border-color: var(--white100);
+}
+
+.icon {
+  width: 1.6rem;
+}
