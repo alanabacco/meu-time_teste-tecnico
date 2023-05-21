@@ -2,12 +2,14 @@
 
 ## Sobre o projeto
 
+🚧 em andamento.
+
 Projeto desenvolvido para o teste técnico de uma vaga frontend na Trade.
-Meu time é um sistema onde o usuário.....
+Meu time é um sistema onde o usuário pode escolher um time, de qualquer país, temporada e liga, e visualizar algumas informações como: jogadores, estatísticas, formação do time, entre outros.
 
 ## Ferramentas e tecnologias utilizadas
 
-O framework Next.js foi utilizado porque atualmente a documentação do React recomenda a criação de projetos utilizando algum framework.
+O framework Next.js foi utilizado porque atualmente a [documentação do React](https://pt-br.react.dev/learn/start-a-new-react-project) recomenda a criação de projetos utilizando algum framework.
 
 - [React](https://react.dev/) - biblioteca de código aberto para interfaces gráficas
 - [Next.js](https://nextjs.org/) - framework para React
@@ -28,7 +30,7 @@ abra o navegador e entre em http://localhost:3000/.
 
 ---
 
-## TODO
+## 🚧 TODO
 
 - [x] pegar os países
 - [x] pegar as ligas do país
@@ -36,12 +38,14 @@ abra o navegador e entre em http://localhost:3000/.
 - [x] validar api key no login
 - [x] ??? selecionar temporada
 - [x] desabilitar botão "buscar informações" antes de escolher time
-- [ ] criar um logout
+- [x] criar um logout
+- [x] não deixar usuario ver a pág de escolha de times se não tiver colocado o token
 - [ ] ao buscar informações:
   - [ ] ver lista jogadores
   - [ ] formação mais utilizada na temporada
   - [ ] tabela de resultados
   - [ ] gráfico de quantidade de gols marcados por tempo de jogo
+- [ ] Refatorar
 
 ---
 

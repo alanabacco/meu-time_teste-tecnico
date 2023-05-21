@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { tokenService } from "@/services/tokenService";
-import { API } from "./team-choice";
 import style from "./../styles/home.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,29 +17,13 @@ export default function Home() {
 
   async function handleSubmit(e: any) {
     e.preventDefault();
-    const validate = await validateToken(token);
-    console.log("validate", validate);
+    const validate = await tokenService.validate(token);
     if (validate === "no") {
       alert("key de autenticação inválida.");
       return;
     }
     tokenService.save(token);
     router.push("/team-choice");
-  }
-
-  async function validateToken(token: string) {
-    try {
-      const response = await axios.get(`${API}/status`, {
-        headers: {
-          "x-rapidapi-key": `${token}`,
-          "x-rapidapi-host": "v3.football.api-sports.io",
-        },
-      });
-      return !response.data.errors.token ? "yes" : "no";
-    } catch (error) {
-      console.error(error);
-      return "no";
-    }
   }
 
   return (
@@ -55,8 +37,9 @@ export default function Home() {
           </header>
           <main className={style.main}>
             <p>
-              Para acessar essa aplicação, você deve criar uma conta na API-Football. Use
-              a key de autenticação para fazer o login.
+              Para acessar essa aplicação, você deve criar uma conta na{" "}
+              <a href="https://www.api-football.com/">API-Football</a>. Use a key de
+              autenticação para fazer o login.
             </p>
             <form action="submit" onSubmit={handleSubmit} className={style.form}>
               <label htmlFor="login">Token: </label>

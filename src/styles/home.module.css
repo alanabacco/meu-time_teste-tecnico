@@ -21,6 +21,10 @@
   margin-bottom: 2.4rem;
 }
 
+.main p a {
+  color: var(--blue300)
+}
+
 .form {
   display: flex;
   align-items: center;

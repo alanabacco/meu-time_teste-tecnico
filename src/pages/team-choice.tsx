@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import ButtonWithIcon from "@/components/ButtonWithIcon/ButtonWithIcon";
 import BackButton from "@/components/BackButton/BackButton";
@@ -8,18 +8,20 @@ import { useCountries } from "@/hooks/useCountries";
 import { useLeagues } from "@/hooks/useLeagues";
 import { useTeams } from "@/hooks/useTeams";
 import { useSeasons } from "@/hooks/useSeasons";
-import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
+import { tokenService } from "@/services/tokenService";
+import { useRouter } from "next/router";
+// import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
 
 export const API = "https://v3.football.api-sports.io";
 
 export default function TeamChoice() {
-  // const { countries } = useCountries();
+  const { countries } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState("");
-  // const { seasons } = useSeasons();
+  const { seasons } = useSeasons();
   const [selectedSeason, setSelectedSeason] = useState(0);
-  // const { leagues } = useLeagues(selectedCountry);
+  const { leagues } = useLeagues(selectedCountry);
   const [selectedLeague, setSelectedLeague] = useState(0);
-  // const { teams } = useTeams(selectedLeague, selectedSeason);
+  const { teams } = useTeams(selectedLeague, selectedSeason);
   const [selectedTeam, setSelectedTeam] = useState("");
 
   const handleCountryChange = (e: any) => {
@@ -37,6 +39,20 @@ export default function TeamChoice() {
   const handleTeamChange = (e: any) => {
     setSelectedTeam(e.target.value);
   };
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = tokenService.get() || "";
+    async function isLogged() {
+      const validate = await tokenService.validate(token);
+      if (validate === "no") {
+        router.push("/?error=401");
+        return;
+      }
+    }
+    isLogged();
+  }, []);
 
   return (
     <div className={style.container}>
@@ -61,7 +77,7 @@ export default function TeamChoice() {
               onChange={handleCountryChange}
             >
               <option value="">País</option>
-              {mockCountrys.map((item: any) => {
+              {countries.map((item: any) => {
                 return (
                   <option value={item.name} key={item.name}>
                     {item.name}
@@ -81,7 +97,7 @@ export default function TeamChoice() {
               onChange={handleSeasonChange}
             >
               <option value={2023}>2023</option>
-              {mockSeasons.map((item: number) => {
+              {seasons.map((item: number) => {
                 // console.log(seasons);
                 return (
                   <option value={item} key={item}>
@@ -103,7 +119,7 @@ export default function TeamChoice() {
               onChange={handleLeagueChange}
             >
               <option value="">Liga</option>
-              {mockLeagues.map((item: any) => {
+              {leagues.map((item: any) => {
                 return (
                   <option value={item.league.id} key={item.league.id}>
                     {item.league.name}
@@ -120,11 +136,11 @@ export default function TeamChoice() {
               required
               name="team"
               id="team"
-              disabled={!selectedLeague} // && !teams}
+              disabled={!selectedLeague}
               onChange={handleTeamChange}
             >
               <option value="">Time</option>
-              {mockTeams.map((item: any) => {
+              {teams.map((item: any) => {
                 return (
                   <option value={item.team.name} key={item.team.id}>
                     {item.team.name}
