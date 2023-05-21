@@ -2,7 +2,7 @@ import { tokenService } from "@/services/tokenService";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export default function Logout() {
+export default function Logout(): JSX.Element {
   const router = useRouter();
 
   useEffect(() => {

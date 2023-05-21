@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const [token, setToken] = useState("");
   const router = useRouter();
 

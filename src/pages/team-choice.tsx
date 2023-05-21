@@ -4,25 +4,26 @@ import ButtonWithIcon from "@/components/ButtonWithIcon/ButtonWithIcon";
 import BackButton from "@/components/BackButton/BackButton";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import style from "./../styles/team-choice.module.css";
-import { useCountries } from "@/hooks/useCountries";
-import { useLeagues } from "@/hooks/useLeagues";
-import { useTeams } from "@/hooks/useTeams";
-import { useSeasons } from "@/hooks/useSeasons";
 import { tokenService } from "@/services/tokenService";
 import { useRouter } from "next/router";
-// import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
+import TeamInfo from "./team-info";
+// import { useCountries } from "@/hooks/useCountries";
+// import { useLeagues } from "@/hooks/useLeagues";
+// import { useTeams } from "@/hooks/useTeams";
+// import { useSeasons } from "@/hooks/useSeasons";
+import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
 
 export const API = "https://v3.football.api-sports.io";
 
-export default function TeamChoice() {
-  const { countries } = useCountries();
+export default function TeamChoice(): JSX.Element {
+  // const { countries } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState("");
-  const { seasons } = useSeasons();
+  // const { seasons } = useSeasons();
   const [selectedSeason, setSelectedSeason] = useState(0);
-  const { leagues } = useLeagues(selectedCountry);
+  // const { leagues } = useLeagues(selectedCountry);
   const [selectedLeague, setSelectedLeague] = useState(0);
-  const { teams } = useTeams(selectedLeague, selectedSeason);
-  const [selectedTeam, setSelectedTeam] = useState("");
+  // const { teams } = useTeams(selectedLeague, selectedSeason);
+  const [selectedTeamId, setSelectedTeamId] = useState(0);
 
   const handleCountryChange = (e: any) => {
     setSelectedCountry(e.target.value);
@@ -37,7 +38,7 @@ export default function TeamChoice() {
   };
 
   const handleTeamChange = (e: any) => {
-    setSelectedTeam(e.target.value);
+    setSelectedTeamId(e.target.value);
   };
 
   const router = useRouter();
@@ -54,6 +55,10 @@ export default function TeamChoice() {
     isLogged();
   }, []);
 
+  // function handleSubmit(e: any) {
+  //   e.preventDefault();
+  // }
+
   return (
     <div className={style.container}>
       <header className={style.header}>
@@ -65,8 +70,8 @@ export default function TeamChoice() {
           <ButtonWithIcon text="Logout" icon={faArrowRightFromBracket} />
         </Link>
       </header>
-      <main className={style.main}>
-        <form action="submit">
+      <main>
+        <form action="submit" className={style.form}>
           <div className={style.selectContainer}>
             <label htmlFor="country">Escolha um país: </label>
             <select
@@ -77,7 +82,7 @@ export default function TeamChoice() {
               onChange={handleCountryChange}
             >
               <option value="">País</option>
-              {countries.map((item: any) => {
+              {mockCountrys.map((item: any) => {
                 return (
                   <option value={item.name} key={item.name}>
                     {item.name}
@@ -96,8 +101,8 @@ export default function TeamChoice() {
               id="season"
               onChange={handleSeasonChange}
             >
-              <option value={2023}>2023</option>
-              {seasons.map((item: number) => {
+              <option value="">Temporada</option>
+              {mockSeasons.map((item: number) => {
                 // console.log(seasons);
                 return (
                   <option value={item} key={item}>
@@ -119,7 +124,7 @@ export default function TeamChoice() {
               onChange={handleLeagueChange}
             >
               <option value="">Liga</option>
-              {leagues.map((item: any) => {
+              {mockLeagues.map((item: any) => {
                 return (
                   <option value={item.league.id} key={item.league.id}>
                     {item.league.name}
@@ -140,19 +145,25 @@ export default function TeamChoice() {
               onChange={handleTeamChange}
             >
               <option value="">Time</option>
-              {teams.map((item: any) => {
+              {mockTeams.map((item: any) => {
                 return (
-                  <option value={item.team.name} key={item.team.id}>
+                  <option value={item.team.id} key={item.team.id}>
                     {item.team.name}
                   </option>
                 );
               })}
             </select>
           </div>
-          <button type="submit" className={style.button} disabled={!selectedTeam}>
+          <button type="submit" className={style.button} disabled={!selectedTeamId}>
             Buscar informações
           </button>
         </form>
+
+        <TeamInfo
+          teamId={selectedTeamId}
+          season={selectedSeason}
+          leagueId={selectedLeague}
+        />
       </main>
     </div>
   );
