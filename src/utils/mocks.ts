@@ -67,7 +67,7 @@ export const mockPlayers = [
     photo: "string",
   },
   {
-    id: 1,
+    id: 2,
     name: "player 02020202",
     age: 21,
     number: 10,
@@ -75,7 +75,7 @@ export const mockPlayers = [
     photo: "string",
   },
   {
-    id: 1,
+    id: 3,
     name: "Player 03 03",
     age: 26,
     number: 3,
@@ -83,7 +83,7 @@ export const mockPlayers = [
     photo: "string",
   },
   {
-    id: 1,
+    id: 4,
     name: "Really Big Name For Test",
     age: 19,
     number: 2,
@@ -91,7 +91,7 @@ export const mockPlayers = [
     photo: "string",
   },
   {
-    id: 1,
+    id: 5,
     name: "P. layer",
     age: 30,
     number: 9,
@@ -99,7 +99,7 @@ export const mockPlayers = [
     photo: "string",
   },
   {
-    id: 1,
+    id: 6,
     name: "Player .P",
     age: 21,
     number: 15,
@@ -111,4 +111,58 @@ export const mockPlayers = [
 export const mockLineup = {
   formation: "4-2-3-1",
   played: 30,
+};
+
+export const mockResults = {
+  league: {},
+  team: {},
+  fixtures: {
+    played: { total: 30 },
+    wins: { total: 15 },
+    draws: { total: 13 },
+    loses: { total: 2 },
+  },
+  goals: {
+    for: {
+      total: {
+        home: 40,
+        away: 26,
+        total: 66,
+      },
+      minute: {
+        "0-15": {
+          total: 4,
+          percentage: "6.06%",
+        },
+        "16-30": {
+          total: 17,
+          percentage: "25.76%",
+        },
+        "31-45": {
+          total: 11,
+          percentage: "16.67%",
+        },
+        "46-60": {
+          total: 13,
+          percentage: "19.70%",
+        },
+        "61-75": {
+          total: 10,
+          percentage: "15.15%",
+        },
+        "76-90": {
+          total: 8,
+          percentage: "12.12%",
+        },
+        "91-105": {
+          total: 3,
+          percentage: "4.55%",
+        },
+        "106-120": {
+          total: null,
+          percentage: null,
+        },
+      },
+    },
+  },
 };

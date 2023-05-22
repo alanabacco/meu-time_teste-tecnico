@@ -7,22 +7,22 @@ import style from "./../styles/team-choice.module.css";
 import { tokenService } from "@/services/tokenService";
 import { useRouter } from "next/router";
 import TeamInfo from "./team-info";
-// import { useCountries } from "@/hooks/useCountries";
-// import { useLeagues } from "@/hooks/useLeagues";
-// import { useTeams } from "@/hooks/useTeams";
-// import { useSeasons } from "@/hooks/useSeasons";
-import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
+import { useCountries } from "@/hooks/useCountries";
+import { useLeagues } from "@/hooks/useLeagues";
+import { useTeams } from "@/hooks/useTeams";
+import { useSeasons } from "@/hooks/useSeasons";
+// import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
 
 export const API = "https://v3.football.api-sports.io";
 
 export default function TeamChoice(): JSX.Element {
-  // const { countries } = useCountries();
+  const { countries } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState("");
-  // const { seasons } = useSeasons();
+  const { seasons } = useSeasons();
   const [selectedSeason, setSelectedSeason] = useState(0);
-  // const { leagues } = useLeagues(selectedCountry);
+  const { leagues } = useLeagues(selectedCountry);
   const [selectedLeague, setSelectedLeague] = useState(0);
-  // const { teams } = useTeams(selectedLeague, selectedSeason);
+  const { teams } = useTeams(selectedLeague, selectedSeason);
   const [selectedTeamId, setSelectedTeamId] = useState(0);
 
   const handleCountryChange = (e: any) => {
@@ -55,10 +55,6 @@ export default function TeamChoice(): JSX.Element {
     isLogged();
   }, []);
 
-  // function handleSubmit(e: any) {
-  //   e.preventDefault();
-  // }
-
   return (
     <div className={style.container}>
       <header className={style.header}>
@@ -82,7 +78,7 @@ export default function TeamChoice(): JSX.Element {
               onChange={handleCountryChange}
             >
               <option value="">País</option>
-              {mockCountrys.map((item: any) => {
+              {countries.map((item: any) => {
                 return (
                   <option value={item.name} key={item.name}>
                     {item.name}
@@ -102,8 +98,7 @@ export default function TeamChoice(): JSX.Element {
               onChange={handleSeasonChange}
             >
               <option value="">Temporada</option>
-              {mockSeasons.map((item: number) => {
-                // console.log(seasons);
+              {seasons.map((item: number) => {
                 return (
                   <option value={item} key={item}>
                     {item}
@@ -124,7 +119,7 @@ export default function TeamChoice(): JSX.Element {
               onChange={handleLeagueChange}
             >
               <option value="">Liga</option>
-              {mockLeagues.map((item: any) => {
+              {leagues.map((item: any) => {
                 return (
                   <option value={item.league.id} key={item.league.id}>
                     {item.league.name}
@@ -145,7 +140,7 @@ export default function TeamChoice(): JSX.Element {
               onChange={handleTeamChange}
             >
               <option value="">Time</option>
-              {mockTeams.map((item: any) => {
+              {teams.map((item: any) => {
                 return (
                   <option value={item.team.id} key={item.team.id}>
                     {item.team.name}
@@ -154,16 +149,15 @@ export default function TeamChoice(): JSX.Element {
               })}
             </select>
           </div>
-          <button type="submit" className={style.button} disabled={!selectedTeamId}>
-            Buscar informações
-          </button>
         </form>
 
-        <TeamInfo
-          teamId={selectedTeamId}
-          season={selectedSeason}
-          leagueId={selectedLeague}
-        />
+        {!!selectedTeamId && (
+          <TeamInfo
+            teamId={selectedTeamId}
+            season={selectedSeason}
+            leagueId={selectedLeague}
+          />
+        )}
       </main>
     </div>
   );

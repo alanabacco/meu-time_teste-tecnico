@@ -36,14 +36,13 @@ abra o navegador e entre em http://localhost:3000/.
 - [x] pegar as ligas do país
 - [x] pegar os times da liga atual
 - [x] validar api key no login
-- [x] ??? selecionar temporada
-- [x] desabilitar botão "buscar informações" antes de escolher time
+- [x] selecionar temporada
 - [x] criar um logout
 - [x] não deixar usuario ver a pág de escolha de times se não tiver colocado o token
-- [ ] ao buscar informações:
-  - [ ] ver lista jogadores
-  - [ ] formação mais utilizada na temporada
-  - [ ] tabela de resultados
+- [ ] ao buscar informações (busca infos qdo seleciona time, ou muda uma info depois):
+  - [x] ver lista jogadores
+  - [x] formação mais utilizada na temporada
+  - [x] tabela de resultados
   - [ ] gráfico de quantidade de gols marcados por tempo de jogo
 - [ ] Refatorar
 

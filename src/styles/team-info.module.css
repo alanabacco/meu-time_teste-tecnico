@@ -1,20 +1,21 @@
 .teamInfoContainer h3 {
   text-align: left;
   margin-block: 3.2rem 1.6rem;
+  font-size: 2rem;
 }
 
 .playersContainer {
   display: flex;
   gap: 2.4rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .card {
   border: 1px solid var(--blue300);
   border-radius: 0.4rem;
-  min-width: 16rem;
+  width: 30%;
   padding: 0.8rem 1.6rem;
   transition: border 0.2s ease-in-out;
 }
@@ -30,11 +31,29 @@
 
 .formation {
   line-height: 2.4rem;
-  text-align: left;
+}
+
+.table {
+  margin-inline: auto;
+}
+
+.table td {
+  font-weight: 400;
+  border-bottom: 1px solid var(--white100);
+  padding: 0.8rem 1.6rem;
 }
 
 @media (max-width: 768px) {
   .playersContainer {
     gap: 1.6rem;
+  }
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    width: 100%;
   }
 }
