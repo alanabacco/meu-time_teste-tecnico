@@ -38,7 +38,6 @@
 }
 
 .table td {
-  font-weight: 400;
   border-bottom: 1px solid var(--white100);
   padding: 0.8rem 1.6rem;
 }

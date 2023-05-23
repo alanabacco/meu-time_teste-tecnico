@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { tokenService } from "@/services/tokenService";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import TeamInfo from "@/components/TeamInfo";
 import ButtonWithIcon from "@/components/ButtonWithIcon/ButtonWithIcon";
 import BackButton from "@/components/BackButton/BackButton";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import style from "./../styles/team-choice.module.css";
-import { tokenService } from "@/services/tokenService";
-import { useRouter } from "next/router";
-import TeamInfo from "./team-info";
 import { useCountries } from "@/hooks/useCountries";
 import { useLeagues } from "@/hooks/useLeagues";
 import { useTeams } from "@/hooks/useTeams";
 import { useSeasons } from "@/hooks/useSeasons";
-// import { mockCountrys, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
+import style from "./../styles/team-choice.module.css";
+// import { mockCountries, mockLeagues, mockSeasons, mockTeams } from "@/utils/mocks";
 
 export const API = "https://v3.football.api-sports.io";
 

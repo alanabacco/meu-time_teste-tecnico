@@ -42,7 +42,7 @@ export const mockLeagues = [
   },
 ];
 
-export const mockCountrys = [
+export const mockCountries = [
   {
     name: "Brasil",
     code: "BR",
@@ -129,39 +129,39 @@ export const mockResults = {
         away: 26,
         total: 66,
       },
-      minute: {
-        "0-15": {
-          total: 4,
-          percentage: "6.06%",
-        },
-        "16-30": {
-          total: 17,
-          percentage: "25.76%",
-        },
-        "31-45": {
-          total: 11,
-          percentage: "16.67%",
-        },
-        "46-60": {
-          total: 13,
-          percentage: "19.70%",
-        },
-        "61-75": {
-          total: 10,
-          percentage: "15.15%",
-        },
-        "76-90": {
-          total: 8,
-          percentage: "12.12%",
-        },
-        "91-105": {
-          total: 3,
-          percentage: "4.55%",
-        },
-        "106-120": {
-          total: null,
-          percentage: null,
-        },
+    },
+    minute: {
+      "0-15": {
+        total: 4,
+        percentage: "6.06%",
+      },
+      "16-30": {
+        total: 17,
+        percentage: "25.76%",
+      },
+      "31-45": {
+        total: 11,
+        percentage: "16.67%",
+      },
+      "46-60": {
+        total: 13,
+        percentage: "19.70%",
+      },
+      "61-75": {
+        total: 10,
+        percentage: "15.15%",
+      },
+      "76-90": {
+        total: 8,
+        percentage: "12.12%",
+      },
+      "91-105": {
+        total: 3,
+        percentage: "4.55%",
+      },
+      "106-120": {
+        total: null,
+        percentage: null,
       },
     },
   },

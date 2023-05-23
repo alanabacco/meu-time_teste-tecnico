@@ -18,6 +18,7 @@ export interface ITeamResults {
       "0-15": { total: number; porcentage: string };
       "16-30": { total: number; porcentage: string };
       "31-45": { total: number; porcentage: string };
+      "46-60": { total: number; porcentage: string };
       "61-75": { total: number; porcentage: string };
       "76-90": { total: number; porcentage: string };
       "91-105": { total: number; porcentage: string };

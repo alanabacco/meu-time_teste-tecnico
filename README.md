@@ -4,7 +4,8 @@
 
 🚧 em andamento.
 
-Projeto desenvolvido para o teste técnico de uma vaga frontend na Trade.
+Projeto desenvolvido para o teste técnico de uma vaga frontend na [Trade Technology](https://tradetechnology.gupy.io/).
+
 Meu time é um sistema onde o usuário pode escolher um time, de qualquer país, temporada e liga, e visualizar algumas informações como: jogadores, estatísticas, formação do time, entre outros.
 
 ## Ferramentas e tecnologias utilizadas
